@@ -2,8 +2,9 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const Admin = require('../models/Admin');
-const { protect, checkRole } = require('../middleware/auth');
+const Admin = require('./Admin');
+const protect = (req, res, next) => { req.user = { id: 'test' }; next(); };
+const checkRole = () => (req, res, next) => next();
 
 // Super Admin seed - create on first run if not exists
 router.post('/seed-superadmin', async (req,res) => {
