@@ -22,7 +22,10 @@ try { app.use('/api/admin', require('./admin')); } catch(e){ console.log('admin 
 try { app.use('/api/users', require('./users')); } catch(e){ console.log('users err', e.message); }
 try { app.use('/api/wallet', require('./wallet')); } catch(e){ console.log('wallet err', e.message); }
 
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on ${PORT}`);
+});
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
