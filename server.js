@@ -19,7 +19,7 @@ app.get('/api/health', (req, res) => {
 
 // Routes
 try {
-  app.use('/api/auth', require('./routes/auth'));
+  app.use('/api/auth', require('./auth'));
 } catch(e) {
   console.log('Auth routes not loaded:', e.message);
 }
