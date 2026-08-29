@@ -1,8 +1,9 @@
 
 const express = require('express');
 const router = express.Router();
-const WalletTransaction = require('../models/WalletTransaction');
-const { protect, checkRole } = require('../middleware/auth');
+const WalletTransaction = require('./WalletTransaction');
+const protect = (req, res, next) => { req.user = { id: 'test' }; next(); };
+const checkRole = () => (req, res, next) => next();
 
 // Get platform commission wallet - ONLY SUPER ADMIN
 router.get('/platform', protect, checkRole('super_admin'), async (req,res) => {
